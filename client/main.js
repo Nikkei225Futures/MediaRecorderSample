@@ -80,6 +80,13 @@ function uploadVideoToSever(data, filename) {
   const formData = new FormData();
   formData.append('video', data, filename);
   const request = new XMLHttpRequest();
+
+  request.onreadystatechange = () => {
+    if(request.readyState === XMLHttpRequest.DONE){
+      console.log(`response POST done: ${request.status}`);
+    }
+  };
+
   request.open('POST', destinationUpload);
   request.send(formData);
 }

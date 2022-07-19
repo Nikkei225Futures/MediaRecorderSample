@@ -26,6 +26,8 @@ app.post('/upload', multerMiddleware.single('video'), (req, res) => {
   }
   console.log(`video uploaded successfully on ${pathUploadedFiles + originalName}`);
   
+  
+  res.setHeader("Access-Control-Allow-Origin", '*');
   res.sendStatus(200); 
 });
 
